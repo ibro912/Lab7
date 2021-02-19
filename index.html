@@ -117,7 +117,7 @@
         document.getElementById('recordForm').style.display = 'none';
 
         let id = window.prompt('Please enter record ID');
-        fetch(endpoint.value + id)
+        fetch(endpoint.value + '/' + id)
           .then(
             function(response)
             {

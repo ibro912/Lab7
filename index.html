@@ -101,7 +101,7 @@
               response.json()
                 .then(function(data)
                 {
-                  output = JSON.stringify(data);
+                  output.value = JSON.stringify(data);
                 });
             });
       }

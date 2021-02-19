@@ -97,12 +97,14 @@
               {
                 output = response.statusText;
               }
-              
-              response.json()
-                .then(function(data)
-                {
-                  output.value = JSON.stringify(data);
-                });
+              else
+              {
+                response.json()
+                  .then(function(data)
+                  {
+                    output.value = JSON.stringify(data);
+                  });
+              }
             }).catch(function(e)
             {
               output = e;
@@ -128,12 +130,14 @@
               {
                 output = response.statusText;
               }
-              
-              response.json()
-                .then(function(data)
-                {
-                  output.value = JSON.stringify(data);
-                });
+              else
+              {
+                response.json()
+                  .then(function(data)
+                  {
+                    output.value = JSON.stringify(data);
+                  });
+              }
             }).catch(function(e)
             {
               output = e;

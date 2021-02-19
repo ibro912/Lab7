@@ -128,7 +128,7 @@
             {
               if(!response.ok)
               {
-                output.value = response.statusText;
+                output.value = response.status + response.statusText;
               }
               else
               {
@@ -140,7 +140,7 @@
               }
             }).catch(function(e)
             {
-              output.value += e;
+              output.value = e;
             });
       }
 
@@ -148,8 +148,38 @@
       // From the 4 CRUD actions, this is the CREATE action, and uses the POST http method.
       // The main difference from updateRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
-      function createRecord() {
-        // TODO
+      function createRecord(command) {
+          let title = document.getElementById('title');
+          let author = document.getElementById('author');
+          let endpoint = document.getElementById('endpoint');
+          let output = document.getElementById('output');
+        if(command = 'show')
+        {
+          document.getElementById('recordForm').style.display = 'inline';
+          document.getElementById('recordIDcontainer').style.display = 'inline';
+        }
+        else if(command = 'submit')
+        {
+          data = 
+          {
+            'title': title.value,
+            'author': author.value,
+          }
+          fetch(endpoint.value, {
+            method: 'POST',
+            headers:
+            {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data),
+
+          })
+          .then(response => response.json())
+          .catch(function(e)
+          {
+            output.value = e;
+          })
+        }
       }
 
       // This function should use fetch to update one existing entry in the given endpoint.

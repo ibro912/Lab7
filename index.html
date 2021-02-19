@@ -95,7 +95,7 @@
             {
               if(!response.ok)
               {
-                output = response.statusText;
+                output.value = response.statusText;
               }
               else
               {
@@ -107,7 +107,7 @@
               }
             }).catch(function(e)
             {
-              output = e;
+              output.value = e;
             });
       }
 
@@ -128,7 +128,7 @@
             {
               if(!response.ok)
               {
-                output = response.statusText;
+                output.value = response.statusText;
               }
               else
               {
@@ -140,7 +140,7 @@
               }
             }).catch(function(e)
             {
-              output = e;
+              output.value = e;
             });
       }
 

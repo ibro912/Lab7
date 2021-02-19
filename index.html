@@ -95,7 +95,7 @@
             {
               if(!response.ok)
               {
-                output.value = response.statusText;
+                output.value = 'Error: ' + response.status + ' ' + response.statusText;
               }
               else
               {
@@ -128,7 +128,7 @@
             {
               if(!response.ok)
               {
-                output.value = response.status + response.statusText;
+                output.value = 'Error: ' + response.status + ' ' + response.statusText;
               }
               else
               {
@@ -174,11 +174,11 @@
 
           })
           .then(response => response.json())
-          .then(data2 => output.value = JSON.stringify(data2))
+          .then(data => output.value = JSON.stringify(data))
           .catch(function(e)
           {
             output.value = e;
-          })
+          });
         }
       }
 

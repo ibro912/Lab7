@@ -95,12 +95,14 @@
             {
               if(!response.ok)
               {
-                output = 'Network Error: ' + response.status;
+                output = response.statusText;
               }
-              else
-              {
-                output = response.json().stringify();
-              }
+              
+              response.json()
+                .then(function(data)
+                {
+                  output = JSON.stringify(data);
+                });
             });
       }
 
@@ -109,7 +111,7 @@
       // The main difference from fetchAll() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchOne() {
-        // TODO
+        
       }
 
       // This function should use fetch to create one entry in the given endpoint.

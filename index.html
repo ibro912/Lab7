@@ -149,10 +149,10 @@
       // The main difference from updateRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
       function createRecord(command) {
-          let title = document.getElementById('title');
-          let author = document.getElementById('author');
-          let endpoint = document.getElementById('endpoint');
-          let output = document.getElementById('output');
+        let title = document.getElementById('title');
+        let author = document.getElementById('author');
+        let endpoint = document.getElementById('endpoint');
+        let output = document.getElementById('output');
         if(command == 'show')
         {
           document.getElementById('recordForm').style.display = 'inline';
@@ -187,7 +187,39 @@
       // The main difference from createRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
       function updateRecord() {
-        // TODO
+        let title = document.getElementById('title');
+        let author = document.getElementById('author');
+        let id = document.getElementById('recordID');
+        let endpoint = document.getElementById('endpoint');
+        let output = document.getElementById('output');
+        if(command == 'show')
+        {
+          document.getElementById('recordForm').style.display = 'inline';
+          document.getElementById('recordIDcontainer').style.display = 'inline';
+        }
+        else if(command == 'submit')
+        {
+          let data = 
+          {
+            'title': title.value,
+            'author': author.value,
+          }
+          fetch(endpoint.value + '/' + id.value, {
+            method: 'POST',
+            headers:
+            {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify(data),
+
+          })
+          .then(response => response.json())
+          .then(data => output.value = JSON.stringify(data))
+          .catch(function(e)
+          {
+            output.value = e;
+          });
+        }
       }
 
       // This function should use fetch to delete one existing entry in the given endpoint.

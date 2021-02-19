@@ -174,7 +174,7 @@
 
           })
           .then(response => response.json())
-          .then(data => output.value = JSON.stringify(data))
+          .then(data => output.value = data)
           .catch(function(e)
           {
             output.value = e;
